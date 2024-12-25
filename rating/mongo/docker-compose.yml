@@ -1,0 +1,20 @@
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    container_name: mongodb_contaner
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pass
+      MONGO_INITDB_DATABASE: ratingDB
+
+    ports:
+      - 27017:27017
+    expose:
+      # Opens port 27017 on the container
+      - '27017'
+    volumes:
+      - mongodb_data:/data/db
+# Names our volume
+volumes:
+  mongodb_data:
